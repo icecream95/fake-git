@@ -4,7 +4,11 @@ A fake git server for reproducing hangs on Snapdragon X Elite SoCs.
 
 ## Usage
 
-```
+**Warning:** May cause filesystem corruption, especially with files
+that are currently being edited, though doing a sync beforehand makes
+this less likely.
+
+```bash
 sync; ./git-server.py & sleep 1; while :; do git clone http://localhost:8000/crash-me-please.git; done
 ```
 
