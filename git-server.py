@@ -46,5 +46,5 @@ class GitHTTPRequestHandler(BaseHTTPRequestHandler):
         self.wfile.write(REFS[pos:])
 
 if __name__ == "__main__":
-    print("Starting server on localhost:" + PORT)
+    print("Starting server on localhost:" + str(PORT))
     HTTPServer(("127.0.0.1", PORT), GitHTTPRequestHandler).serve_forever()
