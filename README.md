@@ -5,7 +5,7 @@ A fake git server for reproducing hangs on Snapdragon X Elite SoCs.
 ## Usage
 
 ```
-./git-server.py & sleep 1; while :; do git clone http://localhost:8000/crash-me-please.git; done
+sync; ./git-server.py & sleep 1; while :; do git clone http://localhost:8000/crash-me-please.git; done
 ```
 
 Each clone should fail successfully with code 418.
