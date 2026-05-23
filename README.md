@@ -2,21 +2,11 @@
 
 A fake git server for reproducing hangs on Snapdragon X Elite SoCs.
 
+## Usage
+
 **Warning:** May cause filesystem corruption, especially with files
 that are currently being edited, though doing a sync beforehand makes
 this less likely.
-
-## Standalone program (no git—just native C)
-
-```bash
-gcc -O2 crash.c -o crash && sync && ./crash
-```
-
-This isn't just a minimal reproducer, but tries to act like git in
-order to achieve production-grade stability. Coming soon—a more
-feather-light version with just the code that's needed.
-
-## Usage (the old way)
 
 ```bash
 sync; ./git-server.py & sleep 1; while :; do git clone http://localhost:8000/crash-me-please.git; done
