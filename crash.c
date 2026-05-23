@@ -17,24 +17,13 @@ int main(void)
     char *arena = mmap(NULL, 2 * 1024 * 1024, PROT_READ | PROT_WRITE,
                        MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
     
-    int fd = open("addr.bin", O_RDONLY);
-    
-    unsigned *addrs = calloc(ITERS, 8);
-    if (read(fd, addrs, ITERS * 8) != ITERS * 8) {
-        return 1;
-    }
-
     for (int go = 0; go < 10000; ++go) {
         printf("%d\n", go);
 
         for (int a = 0; a < ITERS; ++a) {
-            if (((addrs[a*2] + 128) | (addrs[a*2 + 1] + 128)) >= 2 * 1024 * 1024) {
-                return 1;
-            }
-
             char **ref = (char **)(arena + 256);
             char *str = arena;
-            char *alloc = arena + addrs[a * 2];
+            char *alloc = arena + 512 + a * 0x90;
         
             *ref = str;
             for (int i = 0; i < 40; ++i) {
