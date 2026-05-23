@@ -27,10 +27,7 @@ desktop environment is not running.
 
 A mitigation is to remove `SCTLR_EL1_DZE` from `INIT_SCTLR_EL1_MMU_ON`
 in `arch/arm64/include/asm/sysreg.h`, in the Linux kernel source code,
-in order to disable the `dc zva` instruction. This might also have to
-be done for VMs. Deleting the `dc zva` instructions from
-`arch/arm64/lib/memset.S` and `arch/arm64/lib/clear_page.S`, so that
-they cannot be speculatively executed, may also help.
+in order to disable the `dc zva` instruction.
 
 Windows uses a different mitigation, which is currently unknown.
 
