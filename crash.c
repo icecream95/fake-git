@@ -32,9 +32,9 @@ int main(void)
                 return 1;
             }
 
-            char **ref = (char **)(arena + 0xdfb90);
+            char **ref = (char **)(arena + 256);
+            char *str = arena;
             char *alloc = arena + addrs[a * 2];
-            char *str = arena + 0xdfb5f;
         
             *ref = str;
             for (int i = 0; i < 40; ++i) {
