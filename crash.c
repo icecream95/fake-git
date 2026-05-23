@@ -34,7 +34,7 @@ int main(void)
 
             char **ref = (char **)(arena + 0xdfb90);
             char *alloc = arena + addrs[a * 2];
-            char *str = arena + addrs[a * 2 + 1];
+            char *str = arena + 0xdfb5f;
         
             *ref = str;
             for (int i = 0; i < 40; ++i) {
@@ -60,11 +60,6 @@ int main(void)
         
             for (int i = 0; i < 40; ++i) {
                 ACCESS(s + i);
-            }
-
-            // Might be optional
-            for (int i = 0; i < 10; ++i) {
-                BARRIER();
             }
 
             // And that is it!
